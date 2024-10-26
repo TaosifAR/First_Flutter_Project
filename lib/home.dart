@@ -1,3 +1,6 @@
+
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -18,7 +21,7 @@ class _HomeState extends State<Home> {
   void fetchnames(){
     Name = ["Artificial Intelligence","Computre Architecture","Software Engineering","Computre Architecture","Software Engineering"];
   }
-
+bool ShouldAllcourseshow = false;
 
 
 
@@ -31,8 +34,14 @@ class _HomeState extends State<Home> {
   }
 List<Widget> generatingui(List<String> list)
 {
+
   List<Widget> w=[];
-  for(int i=0;i<list.length;i++)
+  var limit = ShouldAllcourseshow ? list.length: 3;
+
+
+
+
+  for(int i=0;i<limit;i++)
     {
       w.add(Text(list[i],style: TextStyle(
         fontSize: 18,
@@ -156,6 +165,8 @@ List<Widget> generatingui(List<String> list)
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
                     children: [
                       Text.rich(
                         TextSpan(
@@ -173,16 +184,33 @@ List<Widget> generatingui(List<String> list)
 
 
                         )
+                      ),
+                      GestureDetector(
+                        onTap:(){
+                        setState(() {
+                          ShouldAllcourseshow = !ShouldAllcourseshow;
+                        });
+                        },
+                        child: Text("Show all",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.blue,
+                        ),),
                       )
                     ],
+
 
                   ),
                 ),
                 SizedBox(height: 30,),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(21, 0, 21, 21),
-                  child: Container(
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 555),
+
                     width: size.width,
+                    height: ShouldAllcourseshow? size.width: size.width*0.5,
 
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(35),
