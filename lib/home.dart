@@ -10,6 +10,39 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int i=0;
+  List<String> Codes =[] , Name = [];
+  void fetchcodes()
+  {
+    Codes = ["CSE-4123","CSE- 3637","CSE-2344","CSE- 3637","CSE-2344"];
+  }
+  void fetchnames(){
+    Name = ["Artificial Intelligence","Computre Architecture","Software Engineering","Computre Architecture","Software Engineering"];
+  }
+
+
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchcodes();
+    fetchnames();
+  }
+List<Widget> generatingui(List<String> list)
+{
+  List<Widget> w=[];
+  for(int i=0;i<list.length;i++)
+    {
+      w.add(Text(list[i],style: TextStyle(
+        fontSize: 18,
+      ),),);
+    }
+  return w;
+
+
+}
+
   @override
   Widget build(BuildContext context) {
    var size= MediaQuery.of(context).size;
@@ -176,18 +209,9 @@ class _HomeState extends State<Home> {
                                  ),),
                                ),
                              ),
-                             Text("CSE-3631",style: TextStyle(
-                               fontSize: 18,
-                             ),),
-                             Text("CSE-3631",style: TextStyle(
-                               fontSize: 18,
-                             ),),
-                             Text("CSE-3631",style: TextStyle(
-                               fontSize: 18,
-                             ),),
-                             Text("CSE-3631",style: TextStyle(
-                               fontSize: 18,
-                             ),),
+                             Column(
+                               children: generatingui(Codes),
+                             ),
                              SizedBox(height: 20,),
 
 
@@ -206,19 +230,9 @@ class _HomeState extends State<Home> {
                                 ),),
                               ),
                             ),
-                            Text("Artificial Intelligence",style: TextStyle(
-                              fontSize: 18,
-                            ),),
-                            Text("Machine Learning",style: TextStyle(
-                              fontSize: 18,
-                            ),),
-                            Text("Theory of Compute",style: TextStyle(
-                              fontSize: 18,
-                            ),),
-                            Text("Digital Logic Design",style: TextStyle(
-                              fontSize: 18,
-                            ),),
-
+                           Column(
+                             children: generatingui(Name),
+                           ),
                             SizedBox(height: 20,),
 
                           ],
