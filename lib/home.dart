@@ -191,7 +191,7 @@ List<Widget> generatingui(List<String> list)
                           ShouldAllcourseshow = !ShouldAllcourseshow;
                         });
                         },
-                        child: Text("Show all",
+                        child: Text(ShouldAllcourseshow? "Show less":"Show all",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w900,
